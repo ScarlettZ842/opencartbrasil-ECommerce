@@ -1,223 +1,289 @@
-<p align="center">
-    <a href="https://www.opencartbrasil.com.br/" title="OpenCart Brasil">
-        <img src="https://user-images.githubusercontent.com/630535/121281061-b1a1cb00-c8ad-11eb-9c58-82accf999857.png" alt="Logo OpenCart Brasil">
-    </a>
-</p>
+## Quick Start with Docker
 
-<p align="center">
-<a href="https://github.com/opencartbrasil/opencartbrasil/releases"><img src="https://img.shields.io/github/downloads/opencartbrasil/opencartbrasil/total.svg"></a>
-<a href="./CHANGELOG.md"><img src="https://img.shields.io/github/release/opencartbrasil/opencartbrasil.svg" alt="Última versão"></a>
-<img src="https://img.shields.io/badge/opencart-3.0.3.3-blue.svg" alt="Compatibilidade">
-<a href="./LICENSE"><img src="https://img.shields.io/github/license/opencartbrasil/opencartbrasil.svg" alt="Licença"></a>
-</p>
+### Prerequisites
 
-### Instalação traduzida:
+- Docker and Docker Compose installed on your system
+- 2GB of available RAM
+- Port 8080 available
+
+### One-Command Setup
+
+```bash
+docker compose up -d --build
+```
+
+### Access the Application
+
+After running the command above, the application will be automatically installed and ready to use:
+
+- **Storefront**: http://localhost:8080
+- **Admin Panel**: http://localhost:8080/admin
+
+### Default Credentials
+
+- **Admin Username**: `admin`
+- **Admin Password**: `admin`
+
+**⚠️ Important**: Change these credentials immediately after first login for security.
+
+### Database Information
+
+The Docker setup includes a MySQL 5.7 database with the following configuration:
+
+| Parameter         | Value                               |
+| ----------------- | ----------------------------------- |
+| **Host**          | `ocbr_db` (internal Docker network) |
+| **Database Name** | `opencartbrasil`                    |
+| **Username**      | `store`                             |
+| **Password**      | `store`                             |
+| **Port**          | `3306`                              |
+
+### Docker Compose Commands
+
+```bash
+# Start the application
+docker compose up -d
+
+# Stop the application
+docker compose down
+
+# View logs
+docker compose logs -f
+
+# Restart the application
+docker compose restart
+
+# Rebuild and start (after code changes)
+docker compose up -d --build
+
+# Remove all containers and volumes (fresh start)
+docker compose down -v
+```
+
+### What Happens Automatically
+
+The Docker setup includes an automated installation process that:
+
+1. ✅ Waits for MySQL database to be ready
+2. ✅ Creates all necessary directories with proper permissions
+3. ✅ Installs the OpenCart Brasil database schema
+4. ✅ Configures the application automatically
+5. ✅ Installs Composer dependencies
+6. ✅ Sets up the admin user
+
+**No manual installation required!**
+
+---
+
+### Screenshots
+
+#### Translated Installation:
 
 <img src="./.github/IMAGES/01.jpg">
 
-### Página principal da loja:
+#### Store Homepage:
 
 <img src="./.github/IMAGES/02.jpg">
 
-### Painel de controle administrativo:
+#### Admin Control Panel:
 
 <img src="./.github/IMAGES/03.jpg">
 
-### Documentação da API REST:
+#### REST API Documentation:
 
 <img src="./.github/IMAGES/04.jpg">
 
-## Apresentação
+## Overview
 
-O projeto OpenCart Brasil é um fork do OpenCart 3, que tem o objetivo de oferecer uma versão do OpenCart otimizada, atualizada e segura, com foco especial no mercado brasileiro, sempre compatível com a última versão estável do OpenCart, e mantendo a licença GPLv3 para garantir que **o projeto OpenCart Brasil é livre e sempre será**.
+OpenCart Brasil is a fork of OpenCart 3, designed to provide an optimized, updated, and secure version with a special focus on the Brazilian market. It maintains compatibility with the latest stable version of OpenCart and uses the GPLv3 license to ensure that **OpenCart Brasil is and always will be free**.
 
-Aqui você poderá analisar o código, relatar erros e enviar correções ou melhorias para o projeto.
+This repository allows you to analyze the code, report bugs, and submit fixes or improvements to the project.
 
-Recomendamos que todos os desenvolvedores sigam este repositório para receberem atualizações sobre o projeto.
+We recommend all developers follow this repository to receive project updates.
 
-## Demonstração
+## Online Demo
 
-Para acessar uma demonstração online do OpenCart Brasil e visualizar a loja em funcionamento <a href="https://www.opencartbrasil.com.br/test-drive-loja" target="_blank">clique aqui</a>.
+To access an online demo of OpenCart Brasil and see the store in action <a href="https://www.opencartbrasil.com.br/test-drive-loja" target="_blank">click here</a>.
 
-## Diferenciais
+## Key Features
 
-- **API REST e Webhook**.
-- Bootstrap 3.3.7 atualizado.
-- Suporte para tarefas agendadas.
-- Sistema de afiliados 100% funcional.
-- Correção de bugs e otimizações no código.
-- Campo NCM e CEST nos produtos.
-- Campo SKU nas opções dos produtos.
-- **Atualização automática do OpenCart Brasil**.
-- Melhorias no gerenciamento de sessões.
-- Melhorias no gerenciamento de cookies.
-- Melhorias no gerenciamento de downloads.
-- Melhorias no processo de login dos clientes.
-- Melhorias na criptografia das senhas dos clientes.
-- Novas extensões do tipo conversor de moedas.
-- O processo de instalação ocorre em português do Brasil.
-- Ferramenta de instalação por linha de comando em português do Brasil.
-- Após a instalação, a loja já estará em português do Brasil com a moeda Real.
-- Todos os dados de demonstração e dados auxiliares já estão em português do Brasil.
+- **REST API and Webhook support**
+- Updated Bootstrap 3.3.7
+- Support for scheduled tasks (cron jobs)
+- Fully functional affiliate system
+- Bug fixes and code optimizations
+- NCM and CEST fields for products (Brazilian tax codes)
+- SKU field in product options
+- **Automatic OpenCart Brasil updates**
+- Improved session management
+- Improved cookie management
+- Improved download management
+- Improved customer login process
+- Improved customer password encryption
+- New currency converter extensions
+- Installation process in Brazilian Portuguese
+- Command-line installation tool in Brazilian Portuguese
+- After installation, store is in Brazilian Portuguese with Real currency
+- All demo data and auxiliary data in Brazilian Portuguese
 
 ## Changelog
 
-Para analisar todas as correções, modificações e melhorias realizadas a cada versão lançada <a href="./CHANGELOG.md">clique aqui</a>.
+To review all fixes, modifications, and improvements made in each released version <a href="./CHANGELOG.md">click here</a>.
 
-## Atualização
+## Automatic Update
 
-Para realizar a atualização automática do OpenCart Brasil, na administração da loja, acesse o menu **Configurações→Manutenção→Atualização**, clique na aba "**Atualizar**", e siga as instruções na página para executar a atualização automática.
+To perform an automatic update of OpenCart Brasil, in the store administration, go to the menu **Settings→Maintenance→Update**, click on the "**Update**" tab, and follow the instructions on the page to execute the automatic update.
 
-**Atenção:** Em casos raros, durante o processo de atualização automática ocorre um erro que não permite o acesso a loja após a substituição dos arquivos da loja, sendo que este é causado pelos seguintes motivos:
+**Warning:** In rare cases, during the automatic update process an error occurs that does not allow access to the store after replacing the store files. This is caused by the following reasons:
 
-- O cache de arquivos criado pelas modificações OCMOD estão causando o problema.
-- O tema que foi instalado na loja sobrescreveu arquivos nativos do OpenCart.
+- The file cache created by OCMOD modifications is causing the problem.
+- The theme installed in the store has overwritten native OpenCart files.
 
-Para resolver, apague todos os arquivos (com exceção do arquivo index.html) e as pastas que estão dentro da pasta storage/**modification** (veja o caminho para a pasta storage dentro do arquivo **config.php**), e reenvie os arquivos do tema que você está utilizando na loja (caso esteja utilizando um tema personalizado).
+To resolve, delete all files (except the index.html file) and folders inside the storage/**modification** folder (see the path to the storage folder in the **config.php** file), and re-upload the theme files you are using in the store (if you are using a custom theme).
 
-Dependendo da hospedagem (com baixa qualidade), pode ser necessário fazer o download da versão mais recente do OpenCart Brasil, e reenviar todos os arquivos da pasta "**system**", sobrescrevendo os arquivos que já estão lá.
+Depending on the hosting (with low quality), it may be necessary to download the latest version of OpenCart Brasil and re-upload all files from the "**system**" folder, overwriting the files that are already there.
 
-Após executar os procedimentos, acesse a administração da loja e vá no menu **Extensões→Modificações**, clique no botão **Atualizar** para atualizar o cache de modificações, depois vá na página principal do painel de controle da administração da loja, abaixo do botão "**Sair**", você verá um botão na cor azul com o desenho de uma engrenagem branca dentro dele, clique neste botão, e no popup que vai abrir, clique nos dois botões na cor laranja que estão dentro da coluna "**Ação**" para atualizar o cache do tema.
+After executing the procedures, access the store administration and go to the menu **Extensions→Modifications**, click the **Update** button to update the modifications cache, then go to the main page of the administration control panel, below the "**Logout**" button, you will see a blue button with a white gear icon inside it, click this button, and in the popup that opens, click the two orange buttons inside the "**Action**" column to update the theme cache.
 
-## Roteiro
+## Roadmap
 
-### Tarefas concluídas:
+### Completed Tasks:
 
-- [x] Loja 100% traduzida.
-- [x] Atualização automática.
-- [x] Instalação 100% traduzida.
-- [x] Suporte para tarefas agendadas.
-- [x] Campo NCM no cadastro do produto.
-- [x] Campo CEST no cadastro do produto.
-- [x] Campo SKU nas opções dos produtos.
-- [x] Novas extensões do tipo conversor de moedas.
-- [x] Correção nas sessões.
-- [x] Correção nas estátisticas.
-- [x] Correção nos arquivos config.
-- [x] Correção na API do catálogo.
-- [x] Correção na edição de pedidos.
-- [x] Correção no sistema de pontos.
-- [x] Correção no programa de afiliados.
-- [x] Correção no Google Merchant Center.
-- [x] Correção nas campanhas de marketing.
-- [x] Correção no formulário de contato.
-- [x] Correção no formulário de produtos.
-- [x] Correção na biblioteca do carrinho.
-- [x] Correção no envio de e-mail por SMTP.
-- [x] Correção das falhas ao finalizar o pedido.
-- [x] Melhorias nos produtos por downloads.
-- [x] Melhorias no gerenciamento de sessão.
-- [x] Melhorias no startup e framework do core.
-- [x] Melhorias na tradução e no layout de e-mail.
-- [x] Melhorias na comunicação com o banco de dados.
-- [x] Melhorias na criptografia das senhas dos clientes.
-- [x] Melhorias na redefinição de senha do cliente na loja.
-- [x] Melhorias ao criar pastas e enviar imagens através do gerenciador de arquivos.
-- [x] API REST para gestão de produtos, atualização do histórico de pedidos e listagem de dados.
-- [x] Webhook para notificar aplicações externas por meio de HTTP sobre atualizações nos produtos e pedidos.
+- [x] 100% translated store.
+- [x] Automatic updates.
+- [x] 100% translated installation.
+- [x] Support for scheduled tasks.
+- [x] NCM field in product registration.
+- [x] CEST field in product registration.
+- [x] SKU field in product options.
+- [x] New currency converter extensions.
+- [x] Session fixes.
+- [x] Statistics fixes.
+- [x] Config file fixes.
+- [x] Catalog API fixes.
+- [x] Order editing fixes.
+- [x] Points system fixes.
+- [x] Affiliate program fixes.
+- [x] Google Merchant Center fixes.
+- [x] Marketing campaign fixes.
+- [x] Contact form fixes.
+- [x] Product form fixes.
+- [x] Cart library fixes.
+- [x] SMTP email sending fixes.
+- [x] Checkout failure fixes.
+- [x] Downloadable product improvements.
+- [x] Session management improvements.
+- [x] Core startup and framework improvements.
+- [x] Email translation and layout improvements.
+- [x] Database communication improvements.
+- [x] Customer password encryption improvements.
+- [x] Customer password reset improvements in the store.
+- [x] Improvements when creating folders and uploading images through the file manager.
+- [x] REST API for product management, order history updates, and data listing.
+- [x] Webhook to notify external applications via HTTP about product and order updates.
 
-### Tarefas em andamento:
+### Tasks in Progress:
 
-- [ ] Marketplace Brasil de extensões.
+- [ ] Brazilian extensions marketplace.
 
-### Próximas tarefas:
+### Upcoming Tasks:
 
-- [ ] Suporte intermediário para LGPD.
+- [ ] Intermediate support for LGPD (Brazilian Data Protection Law).
 
-## Requisitos
+## Requirements
 
-### ⚠ Aviso:
+### ⚠ Warning:
 
-Se o seu serviço de hospedagem não lhe oferece versões atualizadas dos softwares citados abaixo, troque de serviço de hospedagem, pois sua loja não pode ficar exposta por causa das falhas de segurança existentes em softwares antigos.
+If your hosting service does not offer updated versions of the software mentioned below, switch hosting services, as your store cannot be exposed due to security flaws in outdated software.
 
-Se você é o profissional que administra os servidores que armazenam os arquivos e dados da loja, não utilize os softwares descritos abaixo em versões antigas. Utilize as versões mínimas recomendadas, sendo o ideal utilizar as versões mais recentes não só por questões de desempenho, mas principalmente por questão de segurança.
+If you are the professional who manages the servers that store the store's files and data, do not use the software described below in old versions. Use the minimum recommended versions, ideally using the most recent versions not only for performance reasons, but mainly for security reasons.
 
-### Servidores web compatíveis:
+### Compatible Web Servers:
 
-- Apache 2.4 ou superior.
-- Nginx 1.14 ou superior.
-- LiteSpeed 5.4 ou superior.
-- OpenLiteSpeed 1.6 ou superior.
+- Apache 2.4 or higher.
+- Nginx 1.14 or higher.
+- LiteSpeed 5.4 or higher.
+- OpenLiteSpeed 1.6 or higher.
 
 ### OpenSSL:
 
-- 1.0.1c ou superior.
+- 1.0.1c or higher.
 
 ### cURL:
 
-- 7.34.0 ou superior.
+- 7.34.0 or higher.
 
-### Bancos de dados compatíveis:
+### Compatible Databases:
 
-- MySQL 5.5 ou superior (Recomendado 5.7 ou superior).
-- MariaDB 5.5 ou superior (Recomendado 10.3 ou superior).
+- MySQL 5.5 or higher (Recommended 5.7 or higher).
+- MariaDB 5.5 or higher (Recommended 10.3 or higher).
 
-### Versões do PHP compatíveis:
+### Compatible PHP Versions:
 
-- 5.6 ou superior (recomendado 7.4).
+- 5.6 or higher (recommended 7.4).
 
-### Configurações mínimas necessárias no PHP:
+### Minimum Required PHP Settings:
 
-| Diretiva | Valor |
-| -------- | ----- |
-| `register_globals` | Off |
-| `magic_quotes_gpc` | Off |
-| `safe_mode` | Off |
-| `file_uploads` | On |
-| `allow_url_fopen` | On |
-| `open_basedir` | none |
-| `default_charset` | UTF-8 |
-| `max_execution_time` | 360 |
-| `upload_max_filesize` | 100M |
-| `post_max_size` | 100M |
-| `memory_limit` | 128M |
-| `session.auto_start` | Off |
-| `session.use_only_cookies` | On |
-| `session.use_cookies` | On |
-| `session.use_trans_sid` | Off |
-| `session.cookie_httponly` | On |
-| `*session.cookie_secure` | On |
-| `*session.cookie_samesite` | Lax |
-| `session.cache_limiter` | nocache |
-| `session.gc_maxlifetime` | 3600 |
-| `session.gc_probability` | 1 |
-| `session.gc_divisor` | 100 |
+| Directive                  | Value   |
+| -------------------------- | ------- |
+| `register_globals`         | Off     |
+| `magic_quotes_gpc`         | Off     |
+| `safe_mode`                | Off     |
+| `file_uploads`             | On      |
+| `allow_url_fopen`          | On      |
+| `open_basedir`             | none    |
+| `default_charset`          | UTF-8   |
+| `max_execution_time`       | 360     |
+| `upload_max_filesize`      | 100M    |
+| `post_max_size`            | 100M    |
+| `memory_limit`             | 128M    |
+| `session.auto_start`       | Off     |
+| `session.use_only_cookies` | On      |
+| `session.use_cookies`      | On      |
+| `session.use_trans_sid`    | Off     |
+| `session.cookie_httponly`  | On      |
+| `*session.cookie_secure`   | On      |
+| `*session.cookie_samesite` | Lax     |
+| `session.cache_limiter`    | nocache |
+| `session.gc_maxlifetime`   | 3600    |
+| `session.gc_probability`   | 1       |
+| `session.gc_divisor`       | 100     |
 
-### ⚠ Notas:
+### ⚠ Notes:
 
-Só habilite a diretiva **session.cookie_secure** quando o HTTPS estiver funcionando em todas as páginas da sua loja, caso contrário o usuário não conseguirá logar. Lembrando que toda loja deve utilizar certificado de segurança para conexão segura por HTTPS.
+Only enable the **session.cookie_secure** directive when HTTPS is working on all pages of your store, otherwise users will not be able to log in. Remember that every store should use a security certificate for secure HTTPS connection.
 
-Só habilite a diretiva **session.cookie_samesite** se você estiver utilizando o PHP 7.3 ou superior.
+Only enable the **session.cookie_samesite** directive if you are using PHP 7.3 or higher.
 
-Configure as diretivas **session.gc_probability** e **session.gc_divisor** conforme o número de visitas simultâneas/diárias que a loja recebe, pois elas são as responsáveis pelo momento em que ocorrerá a higienização de sessões expiradas, ou seja, se você configurá-las conforme abaixo:
+Configure the **session.gc_probability** and **session.gc_divisor** directives according to the number of simultaneous/daily visits the store receives, as they are responsible for when expired session cleanup will occur. For example, if you configure them as follows:
 
-| Diretiva | Valor |
-| -------- | ----- |
-| `session.gc_probability` | 1 |
-| `session.gc_divisor` | 100 |
+| Directive                | Value |
+| ------------------------ | ----- |
+| `session.gc_probability` | 1     |
+| `session.gc_divisor`     | 100   |
 
-Siginifica que "*em média*" a cada **100 visitas**, há **1% de probabilidade** da higienização de sessões expiradas ser executada, o que é mais que suficiente para uma loja de pequeno porte, sendo que você pode configurar higienizações mais agressivas (não recomendado), conforme abaixo:
+This means that "_on average_" every **100 visits**, there is a **1% probability** that expired session cleanup will be executed, which is more than sufficient for a small store. You can configure more aggressive cleanups (not recommended) as follows:
 
-| Diretiva | Valor |
-| -------- | ----- |
-| `session.gc_probability` | 1 |
-| `session.gc_divisor` | 4 |
+| Directive                | Value |
+| ------------------------ | ----- |
+| `session.gc_probability` | 1     |
+| `session.gc_divisor`     | 4     |
 
-Significa que "*em média*" a cada **4 visitas**, há **25% de probabilidade** da higienização de sessões expiradas ser executada.
+This means that "_on average_" every **4 visits**, there is a **25% probability** that expired session cleanup will be executed.
 
-O importante é **configurar as diretivas com sabedoria**, levando em consideração a análise estatística da quantidade de visitas simultâneas/diárias que a loja recebe, para não executar higienizações desnecessárias ou poucas higienizações, sempre levando em consideração que as configurações devem ser reavaliadas quando houver alterações na quantidade de visitas simultâneas/diárias da loja, ou quando a loja estiver se preperarando para receber um número de visitas acima do rotineiro.
+The important thing is to **configure the directives wisely**, taking into account statistical analysis of the number of simultaneous/daily visits the store receives, to avoid unnecessary cleanups or too few cleanups. Always keep in mind that the settings should be reassessed when there are changes in the number of simultaneous/daily visits to the store, or when the store is preparing to receive a number of visits above the routine.
 
-**Importante:** Não esqueça de habilitar as tarefas agendadas, pois elas são complementares na higienização de sessões expiradas (há instruções mais abaixo sobre como habilitar).
+**Important:** Don't forget to enable scheduled tasks, as they are complementary in cleaning up expired sessions (there are instructions below on how to enable them).
 
-### Configurações mínimas recomendadas no MySQL/MariaDB:
+### Minimum Recommended MySQL/MariaDB Settings:
 
-| Variável | Valor | Descrição |
-| -------- | ----- | --------- |
-| `wait_timeout` | 30 | 30 segundos |
-| `interactive_timeout` | 30 | 30 segundos |
-| `max_allowed_packet` | 16777216 | 16M |
+| Variable              | Value    | Description |
+| --------------------- | -------- | ----------- |
+| `wait_timeout`        | 30       | 30 seconds  |
+| `interactive_timeout` | 30       | 30 seconds  |
+| `max_allowed_packet`  | 16777216 | 16M         |
 
-### Extensões básicas necessárias no PHP:
+### Required Basic PHP Extensions:
 
 - cURL
 - DOM
@@ -230,29 +296,29 @@ O importante é **configurar as diretivas com sabedoria**, levando em considera�
 - ZIP
 - XML
 
-### ⚠ Notas:
+### ⚠ Notes:
 
-Não é compatível com sistema operacional Windows utilizando servidor web IIS.
+Not compatible with Windows operating system using IIS web server.
 
-Em breve a versão mínima aceita pelo OpenCart Brasil será o PHP 7.4, pois o suporte para o PHP até a versão 7.3 encerrará em dezembro de 2021, ou seja, não faz sentido continuar o suporte para versões do PHP que os próprios desenvolvedores abandonaram, o que significa que essas versões não receberão correções de bugs e falhas.
+Soon the minimum version accepted by OpenCart Brasil will be PHP 7.4, as support for PHP up to version 7.3 will end in December 2021. It doesn't make sense to continue supporting PHP versions that the developers themselves have abandoned, which means these versions will not receive bug fixes and security patches.
 
 ## Download
 
-### Através do site:
+### From the Website:
 
-Faça o download da última versão estável através de nosso site [clicando aqui](https://www.opencartbrasil.com.br/download).
+Download the latest stable version from our website [by clicking here](https://www.opencartbrasil.com.br/download).
 
-### Através do repositório:
+### From the Repository:
 
-Faça o download da última versão estável marcada como **latest release** [clicando aqui](https://github.com/opencartbrasil/opencartbrasil/releases/).
+Download the latest stable version marked as **latest release** [by clicking here](https://github.com/opencartbrasil/opencartbrasil/releases/).
 
-### Utilizando o composer:
+### Using Composer:
 
 ```bash
-composer create-project opencartbrasil/opencartbrasil nome_da_pasta
+composer create-project opencartbrasil/opencartbrasil folder_name
 ```
 
-### Utilizando o Git Bash:
+### Using Git Bash:
 
 ```bash
 git clone --depth 1 https://github.com/opencartbrasil/opencartbrasil.git
@@ -260,78 +326,35 @@ cd opencartbrasil
 composer install
 ```
 
-### Utilizando o Docker
+### Using Docker
 
 ```bash
 docker run -p 80:80 opencartbrasil/opencartbrasil:latest
 ```
 
-### Utilizando o Docker-compose
+### ⚠ Preparations:
 
-```yaml
-version: '3'
+1. Create a MySQL database for the store.
+2. Create a MySQL user for the store. **Warning:** In production use a dedicated user for the store.
+3. Grant the user access permissions to the store database.
 
-networks:
-    app-network:
+### Through Browser (Manual):
 
-services:
-  app:
-    image: opencartbrasil/opencartbrasil:latest
-    container_name: app
-    volumes:
-      - ./src:/var/www/html
-    networks:
-      - app-network
-    ports:
-      - 80:80
-    environment:
-      OCBR_HTTP_SERVER: "http://localhost/"
-      OCBR_DB_HOST: "db"
-      OCBR_DB_USER: "store"
-      OCBR_DB_PASS: "store"
-      OCBR_ADMIN_USER: "admin"
-      OCBR_ADMIN_PASS: "123456"
-      OCBR_ADMIN_EMAIL: "usuario@dominio.com.br"
-    depends_on:
-      - db
+1. Extract the contents of the zip file you downloaded to the server where you will install OpenCart Brasil.
+2. Rename the **config_dist.php** and admin/**config_dist.php** files to **config.php**.
+3. In a Linux environment, the initial permission for all files should be **644** and for all folders **755**.
+4. Through the browser, access the domain where the OpenCart Brasil files are located to start the installation.
+5. At the end of the installation, the store will be ready to use.
 
-  db:
-    image: mysql:5.7
-    container_name: db
-    environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_USER: store
-      MYSQL_PASSWORD: store
-      MYSQL_DATABASE: opencartbrasil
-    networks:
-      - app-network
-```
+### Through CLI Interface (Automatic):
 
-## Instalação
+Through the command line interface, the store can be installed automatically.
 
-### ⚠ Preparativos:
+1. Extract the contents of the zip file you downloaded to the server where you will install OpenCart Brasil.
+2. In the root directory where the OpenCart Brasil files are located, execute the command line to start the installation.
+3. At the end of the installation, the store will be ready to use.
 
-1. Crie um banco de dados no MySQL para uso da loja.
-2. Crie um usuário no MySQL para uso da loja. **Atenção:** Em produção utilize um usuário exclusivo para a loja.
-3. Adicione no usuário as permissões de acesso ao banco de dados da loja.
-
-### Através do navegador (manual):
-
-1. Extraia o conteúdo do arquivo zip que você baixou, no servidor em que você irá instalar o OpenCart Brasil.
-2. Renomeie os arquivos **config_dist.php** e admin/**config_dist.php** para **config.php**.
-3. Em ambiente Linux, a permissão incial de todos os arquivos deve ser **644** e de todas as pastas **755**.
-4. Através do navegador, acesse o domínio onde estão os arquivos do OpenCart Brasil para iniciar a instalação.
-5. Ao final da instalação a loja estará pronta para utilização.
-
-### Através da Interface CLI (automática):
-
-Através da interface de linha de comandos, a loja pode ser instalada automaticamente.
-
-1. Extraia o conteúdo do arquivo zip que você baixou, no servidor em que você irá instalar o OpenCart Brasil.
-2. No diretório raiz onde estão os arquivos do OpenCart Brasil, execute a linha de comando para iniciar a instalação.
-3. Ao final da instalação a loja estará pronta para utilização.
-
-**Exemplo de instalação através da linha de comando no servidor local:**
+**Example installation through command line on local server:**
 
 ```bash
 php install/cli_install.php install \
@@ -348,40 +371,40 @@ php install/cli_install.php install \
   --http_server http://localhost/
 ```
 
-Lista de parâmetros para instalação através da linha de comando:
+List of parameters for installation through command line:
 
-| Parâmetro | Descrição | Padrão | Obrigatório |
-| --------- | --------- | ------ | ----------- |
-| `db_driver` | Driver para conexão com o banco de dados (mysqli, pdo ou pgsql). | mysqli | Não |
-| `db_hostname` | Nome do servidor de banco de dados. | localhost | Não |
-| `db_username` | Usuário com permissão para o banco de dados. | | Sim |
-| `db_password` | Senha do usuário com permissão para o banco de dados. | | Sim |
-| `db_database` | Nome do banco de dados para instalar as tabelas da loja. | | Sim |
-| `db_port` | Porta para acesso ao banco de dados MySQL. | 3306 | Não |
-| `db_prefix` | Prefixo adicionado nas tabelas criadas no banco de dados. | ocbr_ | Não |
-| `username` | Usuário de acesso do administrador da loja. | admin | Não |
-| `password` | Senha de acesso do usuário administrador da loja. | | Sim |
-| `email` | E-mail do usuário administrador da loja. | | Sim |
-| `http_server` | Domínio da loja com uma / (barra) no final. | | Sim |
+| Parameter     | Description                                             | Default   | Required |
+| ------------- | ------------------------------------------------------- | --------- | -------- |
+| `db_driver`   | Driver for database connection (mysqli, pdo, or pgsql). | mysqli    | No       |
+| `db_hostname` | Database server name.                                   | localhost | No       |
+| `db_username` | User with permission for the database.                  |           | Yes      |
+| `db_password` | Password for the user with permission for the database. |           | Yes      |
+| `db_database` | Database name to install the store tables.              |           | Yes      |
+| `db_port`     | Port for MySQL database access.                         | 3306      | No       |
+| `db_prefix`   | Prefix added to tables created in the database.         | ocbr\_    | No       |
+| `username`    | Store administrator access username.                    | admin     | No       |
+| `password`    | Store administrator user access password.               |           | Yes      |
+| `email`       | Store administrator user email.                         |           | Yes      |
+| `http_server` | Store domain with a trailing slash (/).                 |           | Yes      |
 
-## Configurações adicionais
+## Additional Settings
 
-### Habilitar as tarefas agendadas (obrigatório):
+### Enable Scheduled Tasks (Required):
 
-A execução das tarefas agendadas são essenciais para o funcionamento do OpenCart Brasil, sendo que a execução das tarefas agendadas não sobrecarrega a navegação da loja, pois elas ocorrem em segundo plano.
+Executing scheduled tasks is essential for OpenCart Brasil to function properly. Scheduled task execution does not overload store navigation as they run in the background.
 
-Atualmente as seguintes tarefas estão agendadas para serem executadas no OpenCart Brasil:
+Currently the following tasks are scheduled to run in OpenCart Brasil:
 
-- Higienizar as sessões expiradas uma vez ao dia.
-- Atualizar a cotação das moedas uma vez ao dia.
+- Clean expired sessions once a day.
+- Update currency rates once a day.
 
-Para executar as tarefas agendadas do OpenCart Brasil, você necessitará acessar através da administração da loja o menu **Extensões→Tarefas agendadas**, copiar a linha que está no campo **Comando**, e adicioná-la para ser executada a cada 1 (uma) hora no Agendador de Tarefas (Cronjobs ou Tarefas Cron) de sua hospedagem.
+To execute OpenCart Brasil scheduled tasks, you need to access the **Extensions→Scheduled Tasks** menu through the store administration, copy the line in the **Command** field, and add it to be executed every 1 (one) hour in your hosting's Task Scheduler (Cronjobs or Cron Tasks).
 
-**Importante:** Se você nunca utilizou o Agendador de Tarefas de sua hospedagem, solicite ajuda ao suporte de sua hospedagem para saber como utilizá-lo.
+**Important:** If you have never used your hosting's Task Scheduler, ask your hosting support for help on how to use it.
 
-### Habilitar URL amigável em servidor web Nginx (opcional):
+### Enable Friendly URLs on Nginx Web Server (Optional):
 
-Substitua o bloco `location / { }` do seu arquivo **nginx.conf** por:
+Replace the `location / { }` block in your **nginx.conf** file with:
 
 ```
 location / {
@@ -401,30 +424,24 @@ location ~* (\.twig|\.tpl|\.ini|\.log|(?<!robots)\.txt)$ {
 }
 ```
 
-## Versionamento
 
-Para o controle de versões utilizamos as especificações de [Versionamento Semântico](https://semver.org/lang/pt-BR/spec/v2.0.0.html)
 
-## Suporte
+## Support
 
-Este repositório não é adequado para fornecer suporte sobre a utilização do projeto OpenCart Brasil.
+This repository is not suitable for providing support on using the OpenCart Brasil project.
 
-Só registre uma Issue para relatar erros no núcleo do projeto OpenCart Brasil.
+Only register an Issue to report bugs in the core of the OpenCart Brasil project.
 
-Para suporte relacionado sobre a utilização do projeto OpenCart Brasil, utilize o nosso fórum:
+For support related to using the OpenCart Brasil project, use our forum:
 
 https://forum.opencartbrasil.com.br/
 
-## Contribuindo
 
-Se você encontrou um erro no núcleo do projeto OpenCart Brasil e deseja nos relatar, você deve registrar uma Issue.
 
-Se você tem uma correção ou melhoria e deseja nos enviar, faça um fork e nos envie um Pull request para avaliarmos.
+## Security Vulnerabilities
 
-## Vulnerabilidades
+If you discover a security vulnerability in the OpenCart Brasil project, send an email to [dev@opencartbrasil.com.br](mailto:dev@opencartbrasil.com.br). All reported vulnerabilities will be immediately addressed if confirmed.
 
-Se você descobrir uma vulnerabilidade de segurança no projeto OpenCart Brasil, envie um e-mail para [dev@opencartbrasil.com.br](mailto:dev@opencartbrasil.com.br). Todas as vulnerabilidades informadas serão imediatamente tratadas caso confirmadas.
+## License
 
-## Licença
-
-O projeto OpenCart Brasil é um software de código aberto licenciado sob a [GPL v3](./LICENSE).
+The OpenCart Brasil project is open source software licensed under the [GPL v3](./LICENSE).
