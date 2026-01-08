@@ -83,11 +83,18 @@ The Docker setup includes an automated installation process that:
 
 #### Store Homepage:
 
-<img src="./.github/IMAGES/02.jpg">
+<img width="1349" height="724" alt="Screenshot 2026-01-07 at 19 12 17" src="https://github.com/user-attachments/assets/d77c0726-1d17-4197-aa08-1148873ba556" />
+<img width="1299" height="738" alt="Screenshot 2026-01-07 at 19 12 53" src="https://github.com/user-attachments/assets/ecb7dd4e-2f80-4bbe-a01f-d52583d46d06" />
+<img width="1251" height="732" alt="Screenshot 2026-01-07 at 19 13 19" src="https://github.com/user-attachments/assets/64c1d18f-e4eb-4a0e-a1bc-f640f6257afc" />
+<img width="1326" height="721" alt="Screenshot 2026-01-07 at 19 10 02" src="https://github.com/user-attachments/assets/a67dec5c-c31e-411a-907a-051a0b038d2b" />
+
 
 #### Admin Control Panel:
 
+<img width="1369" height="700" alt="Screenshot 2026-01-07 at 19 15 12" src="https://github.com/user-attachments/assets/e8f82712-f504-455f-9ef5-4605b4471cc6" />
 <img src="./.github/IMAGES/03.jpg">
+<img width="1410" height="726" alt="Screenshot 2026-01-07 at 19 14 16" src="https://github.com/user-attachments/assets/f8c89470-b7e9-4b5c-b870-27a7aa417226" />
+
 
 #### REST API Documentation:
 
@@ -387,61 +394,3 @@ List of parameters for installation through command line:
 | `email`       | Store administrator user email.                         |           | Yes      |
 | `http_server` | Store domain with a trailing slash (/).                 |           | Yes      |
 
-## Additional Settings
-
-### Enable Scheduled Tasks (Required):
-
-Executing scheduled tasks is essential for OpenCart Brasil to function properly. Scheduled task execution does not overload store navigation as they run in the background.
-
-Currently the following tasks are scheduled to run in OpenCart Brasil:
-
-- Clean expired sessions once a day.
-- Update currency rates once a day.
-
-To execute OpenCart Brasil scheduled tasks, you need to access the **Extensions→Scheduled Tasks** menu through the store administration, copy the line in the **Command** field, and add it to be executed every 1 (one) hour in your hosting's Task Scheduler (Cronjobs or Cron Tasks).
-
-**Important:** If you have never used your hosting's Task Scheduler, ask your hosting support for help on how to use it.
-
-### Enable Friendly URLs on Nginx Web Server (Optional):
-
-Replace the `location / { }` block in your **nginx.conf** file with:
-
-```
-location / {
-  try_files $uri $uri/ @opencart;
-}
-
-location @opencart {
-  rewrite ^/sitemap.xml$ /index.php?route=extension/feed/google_sitemap last;
-  rewrite ^/googlebase.xml$ /index.php?route=extension/feed/google_base last;
-  rewrite ^/system/storage/(.*) /index.php?route=error/not_found last;
-
-  rewrite ^/(.+)$ /index.php?_route_=$1 last;
-}
-
-location ~* (\.twig|\.tpl|\.ini|\.log|(?<!robots)\.txt)$ {
-  deny all;
-}
-```
-
-
-
-## Support
-
-This repository is not suitable for providing support on using the OpenCart Brasil project.
-
-Only register an Issue to report bugs in the core of the OpenCart Brasil project.
-
-For support related to using the OpenCart Brasil project, use our forum:
-
-https://forum.opencartbrasil.com.br/
-
-
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability in the OpenCart Brasil project, send an email to [dev@opencartbrasil.com.br](mailto:dev@opencartbrasil.com.br). All reported vulnerabilities will be immediately addressed if confirmed.
-
-## License
-
-The OpenCart Brasil project is open source software licensed under the [GPL v3](./LICENSE).
